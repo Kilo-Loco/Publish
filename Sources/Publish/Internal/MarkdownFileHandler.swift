@@ -36,6 +36,9 @@ internal struct MarkdownFileHandler<Site: Website> {
 
             for file in subfolder.files.recursive {
                 guard file.isMarkdown else { continue }
+                if let content = try? factory.makeContent(fromFile: file), content.isDraft {
+                    continue
+                }
 
                 if file.nameExcludingExtension == "index", file.parent == subfolder {
                     let content = try factory.makeContent(fromFile: file)
