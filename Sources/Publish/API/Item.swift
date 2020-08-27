@@ -45,6 +45,12 @@ public struct Item<Site: Website>: AnyItem, Hashable {
         self.tags = tags
         self.content = content
         self.rssProperties = rssProperties
+
+        let moreTags: [Tag] = [content.programmingLanguage, content.framework].compactMap {
+            guard let string = $0 else { return nil }
+            return Tag(string)
+        }
+        self.tags.append(contentsOf: moreTags)
     }
 }
 

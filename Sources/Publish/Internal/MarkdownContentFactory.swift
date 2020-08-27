@@ -68,6 +68,8 @@ private extension MarkdownContentFactory {
         let audio = try decoder.decodeIfPresent("audio", as: Audio.self)
         let video = try decoder.decodeIfPresent("video", as: Video.self)
         let isDraft = try decoder.decodeIfPresent("isDraft", as: Bool.self)
+        let programmingLanguage = try decoder.decodeIfPresent("programmingLanguage", as: String.self)
+        let framework = try decoder.decodeIfPresent("framework", as: String.self)
 
         return Content(
             title: title ?? markdown.title ?? file.nameExcludingExtension,
@@ -78,7 +80,9 @@ private extension MarkdownContentFactory {
             imagePath: imagePath,
             audio: audio,
             video: video,
-            isDraft: isDraft ?? false
+            isDraft: isDraft ?? false,
+            programmingLanguage: programmingLanguage,
+            framework: framework
         )
     }
 

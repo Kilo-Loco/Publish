@@ -18,6 +18,8 @@ public struct Content: Hashable, ContentProtocol {
     public var audio: Audio?
     public var video: Video?
     public var isDraft: Bool
+    public var programmingLanguage: String?
+    public var framework: String?
 
     /// Initialize a new instance of this type
     /// - parameter title: The location's title.
@@ -29,15 +31,21 @@ public struct Content: Hashable, ContentProtocol {
     /// - parameter audio: Any audio data associated with this content.
     /// - parameter video: Any video data associated with this content.
     /// - parameter isDraft: Whether the content is ready to be published.
-    public init(title: String = "",
-                description: String = "",
-                body: Body = Body(html: ""),
-                date: Date = Date(),
-                lastModified: Date = Date(),
-                imagePath: Path? = nil,
-                audio: Audio? = nil,
-                video: Video? = nil,
-                isDraft: Bool = false) {
+    /// - parameter programmingLanguage: The primary programming language used in the article.
+    /// - parameter framework: The framework focused on in the article.
+    public init(
+        title: String = "",
+        description: String = "",
+        body: Body = Body(html: ""),
+        date: Date = Date(),
+        lastModified: Date = Date(),
+        imagePath: Path? = nil,
+        audio: Audio? = nil,
+        video: Video? = nil,
+        isDraft: Bool = false,
+        programmingLanguage: String? = nil,
+        framework: String? = nil
+    ) {
         self.title = title
         self.description = description
         self.body = body
@@ -47,6 +55,8 @@ public struct Content: Hashable, ContentProtocol {
         self.audio = audio
         self.video = video
         self.isDraft = isDraft
+        self.programmingLanguage = programmingLanguage
+        self.framework = framework
     }
 }
 
